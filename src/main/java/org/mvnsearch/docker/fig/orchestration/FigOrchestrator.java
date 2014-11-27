@@ -41,7 +41,7 @@ public class FigOrchestrator {
         List<String> commands = new ArrayList<String>();
         commands.add("fig");
         commands.add(command);
-        if (options != null) {
+        if (options != null && options.length > 0) {
             Collections.addAll(commands, options);
         }
         ProcessBuilder pb = new ProcessBuilder(commands);
