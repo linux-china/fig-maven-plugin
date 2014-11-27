@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress XmlUnboundNsPrefix -->
+<configuration debug="false">
+
+    <appender name="MAVEN" class="org.mvnsearch.docker.fig.util.MavenLogAppender">
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="info" additivity="false">
+        <appender-ref ref="MAVEN"/>
+    </root>
+
+</configuration>
