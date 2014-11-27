@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.util.*;
 
 /**
@@ -46,21 +47,18 @@ public class FigOrchestrator {
         }
         ProcessBuilder pb = new ProcessBuilder(commands);
         pb.directory(projDir);
+        pb.redirectErrorStream(true);
         Map<String, String> env = pb.environment();
         if (properties.contains("DOCKER_HOST")) {
             env.put("DOCKER_HOST", properties.getProperty("DOCKER_HOST"));
         }
         try {
+            LOG.info(command + "ing the fig...");
             Process p = pb.start();
-            if (p.waitFor() != 0) {
-                LOG.error("Failed to " + command + " fig");
-                System.out.println(IOUtils.toString(p.getErrorStream()));
-            } else {
-                LOG.info("Fig " + command + ":");
-                System.out.println(IOUtils.toString(p.getInputStream()));
-            }
+            LOG.info(IOUtils.toString(p.getInputStream()).trim());
         } catch (Exception e) {
             LOG.error("failed to start fig", e);
         }
     }
+
 }
