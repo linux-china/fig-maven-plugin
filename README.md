@@ -1,8 +1,7 @@
 Fig Maven Plugin
 =======================================
 
-fig(http://www.fig.sh/) is a fast, isolated development environments management tool using Docker
-
+fig(http://www.fig.sh/) is a fast, isolated development environments management tool using Docker.
 
 ### Usage
 Please add following code into pom.xml
